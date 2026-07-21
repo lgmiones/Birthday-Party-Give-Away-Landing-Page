@@ -1,0 +1,111 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Editorial serif for headlines (Georgia/Cambria ship on effectively every
+     Windows and Mac machine, have genuine italic + bold cuts, and read as
+     warm and characterful rather than generic AI-sans). Body stays on a
+     clean system UI stack for readability. Fully self-contained — no
+     external font fetch, so the build never depends on network access. */
+  --font-display: Georgia, Cambria, "Iowan Old Style", "Palatino Linotype",
+    "Book Antiqua", serif;
+  --font-body: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial,
+    sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #fffcf6;
+  color: #3a2e45;
+}
+
+/* Respect users who prefer reduced motion: disable scroll animation and
+   all decorative keyframe animations. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Visible, accessible focus states across the site */
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible {
+  outline: 3px solid #f0568c;
+  outline-offset: 3px;
+  border-radius: 0.5rem;
+}
+
+/* Scroll-reveal utility (JS toggles .is-visible via IntersectionObserver) */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Soft confetti-dot background pattern, used behind sections */
+.confetti-bg {
+  background-image: radial-gradient(circle, rgba(240, 86, 140, 0.18) 2px, transparent 2px),
+    radial-gradient(circle, rgba(92, 196, 245, 0.18) 2px, transparent 2px),
+    radial-gradient(circle, rgba(255, 214, 92, 0.22) 2px, transparent 2px);
+  background-size: 56px 56px, 72px 72px, 64px 64px;
+  background-position: 0 0, 20px 30px, 40px 10px;
+}
+
+/* Hand-drawn highlighter-marker effect for the headline's final line */
+.marker-highlight {
+  position: relative;
+  display: inline;
+  white-space: nowrap;
+  z-index: 0;
+}
+
+.marker-highlight::before {
+  content: "";
+  position: absolute;
+  left: -0.15em;
+  right: -0.15em;
+  bottom: 0.05em;
+  top: 0.28em;
+  background: #ffd65c;
+  transform: rotate(-1deg);
+  z-index: -1;
+  border-radius: 3px 8px 3px 8px;
+}
+
+/* Sticker-style rotated badge, used on the hero preview card */
+.sticker-badge {
+  transform: rotate(-6deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sticker-badge {
+    transform: none;
+  }
+}

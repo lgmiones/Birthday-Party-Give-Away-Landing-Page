@@ -1,0 +1,75 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# env files
+.env*
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# ---------------------------------------------------------------------------
+# Unused source photography — only the files actually referenced in the app
+# (Navbar/HeroSection/SocialProofSection etc.) are tracked. The rest of this
+# folder is the original Bolder Adventure Park asset dump and is kept local
+# only so it stays out of the public repo and doesn't bloat clone size.
+# Delete this section if you decide to use more of the source photos later.
+# ---------------------------------------------------------------------------
+/public/images/After-hero-section/
+/public/images/Base-Camp/
+/public/images/Extreme All Access/
+/public/images/MJ Dejavu/
+/public/images/Summit/
+/public/images/Ticketing pic/
+/public/images/videos/
+
+/public/images/All-Attraction/*
+!/public/images/All-Attraction/Bumper-cars.jpg
+
+/public/images/carousel-images/*
+!/public/images/carousel-images/Carousel-1.jpg
+
+/public/images/images/*
+!/public/images/images/bolder-logo.png
+!/public/images/images/Reviews-birthday-parties.jpg
+!/public/images/images/Birthday-parties.jpg
+!/public/images/images/Parties1.png
+!/public/images/images/Parties2.png
+!/public/images/images/Groups2.jpg
+
+# Superseded illustrations — kept locally for reference, no longer imported
+# anywhere in the app now that real photography is in use.
+/public/images/gallery-*.svg
+/public/images/hero-birthday-party.svg
