@@ -58,9 +58,10 @@ app/
   globals.css        Tailwind + scroll-reveal + reduced-motion styles
   giveaway/page.tsx  Placeholder destination for all "Enter Now to Win" CTAs
 components/
-  HeroSection.tsx        Win-focused headline, prize teaser, entry mechanics chips
+  HeroSection.tsx         Win-focused headline, prize teaser, entry mechanics chips
   PrizeSection.tsx        What's included + valid 12 months / 52 weekly drawings / free
-  AboutBolderSection.tsx  Brief "what is Bolder" blurb + attraction photo grid
+  AboutBolderSection.tsx  Brief "what is Bolder" blurb + attraction photo strip
+  AttractionMarquee.tsx   Endless auto-scrolling filmstrip of attraction photos
   FAQSection.tsx          4-question accessible accordion (single-open)
   FinalCTA.tsx            Closing banner CTA
   Footer.tsx
@@ -72,9 +73,11 @@ lib/
 public/images/       Bolder Adventure Park logo + photography used on the page
 ```
 
-Unused but left in place (not imported by `page.tsx`, safe to delete or
-repurpose later): `Navbar.tsx`, `BenefitsSection.tsx`, `HowItWorksSection.tsx`,
-`SocialProofSection.tsx` — earlier, longer-form drafts of this page.
+Every file in `components/` is imported and rendered somewhere — no unused
+drafts left in the tree. (Earlier longer-form sections — `Navbar.tsx`,
+`BenefitsSection.tsx`, `HowItWorksSection.tsx`, `SocialProofSection.tsx`,
+and the original dot/arrow `AttractionCarousel.tsx` — were removed once the
+page settled on its current lean structure.)
 
 ## Notes
 
