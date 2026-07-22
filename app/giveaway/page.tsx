@@ -64,7 +64,7 @@ export default function GiveawayPage() {
               alt="Bolder Adventure Park"
               width={340}
               height={216}
-              className="h-14 w-auto"
+              className="h-20 w-auto sm:h-24"
               priority
             />
           </Link>
