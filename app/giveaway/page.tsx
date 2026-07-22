@@ -173,7 +173,7 @@ export default function GiveawayPage() {
           </p>
         </div>
       </main>
-      <Footer />
+      <Footer showNavLinks={false} />
     </>
   );
 }
