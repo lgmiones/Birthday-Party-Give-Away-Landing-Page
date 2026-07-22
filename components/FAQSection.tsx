@@ -6,24 +6,16 @@ import { IconChevronDown } from "./icons";
 
 const faqs = [
   {
-    q: "What is included in the giveaway?",
-    a: "The full prize bundle covers the party venue, food and drinks, a birthday cake, decorations, games and activities, a party host, goodie bags, and a photography package. Full details are listed on the giveaway page.",
-  },
-  {
-    q: "Who can participate?",
-    a: "The giveaway is open to families who meet the eligibility requirements listed in the official rules on the giveaway page. Check there for age, location, and other participation criteria.",
+    q: "How does the drawing work?",
+    a: "We draw one winner every week. Enter once and you're automatically included in all 52 weekly drawings over the next year — one entry, 52 chances to win.",
   },
   {
     q: "Is there an entry fee?",
-    a: "No. Entry is free — there is no purchase or payment required to participate.",
+    a: "No. Entry is completely free — there is no purchase or payment required to participate.",
   },
   {
-    q: "When will the winner be announced?",
-    a: "The winner announcement date is listed on the giveaway page along with the full entry timeline.",
-  },
-  {
-    q: "Can the prize be transferred?",
-    a: "Prize transferability details, including whether it can be gifted or rescheduled, are outlined in the official giveaway rules.",
+    q: "What happens if I win?",
+    a: "You'll be contacted directly and can book your free All Access Birthday Party for 10 kids any day within the next 12 months.",
   },
   {
     q: "Where can I see the complete rules?",
@@ -35,7 +27,7 @@ export default function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section id="faq" aria-labelledby="faq-heading" className="bg-party-lavender-50 py-20 sm:py-28">
+    <section id="faq" aria-labelledby="faq-heading" className="bg-party-lavender-50 py-16 sm:py-24">
       <div className="mx-auto max-w-3xl px-5 sm:px-8">
         <ScrollReveal className="text-center">
           <h2 id="faq-heading" className="font-display text-3xl font-extrabold text-ink sm:text-4xl">

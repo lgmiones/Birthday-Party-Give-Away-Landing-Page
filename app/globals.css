@@ -109,3 +109,45 @@ summary:focus-visible {
     transform: none;
   }
 }
+
+/* Endless filmstrip loop for AttractionMarquee — plain CSS (not a
+   Tailwind-config-generated utility) so it works immediately on save with
+   no dependency on the dev server having picked up a tailwind.config.ts
+   change. The track renders the photo list twice back to back; animating
+   exactly one copy-width to the left makes the seam invisible and the
+   scroll genuinely never-ending. */
+@keyframes marquee-x {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee-x 36s linear infinite;
+  will-change: transform;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee {
+    animation: none;
+  }
+}
+
+/* Hide the native scrollbar on the attraction carousel's scroll track while
+   keeping it fully scrollable/swipeable — snapping + dots + arrows are the
+   intended navigation UI, not a visible scrollbar. */
+.hide-scrollbar {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/legacy Edge */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, modern Edge */
+}

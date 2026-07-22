@@ -1,110 +1,76 @@
 import CTAButton from "./CTAButton";
 import ScrollReveal from "./ScrollReveal";
-import {
-  IconMapPin,
-  IconFood,
-  IconCake,
-  IconDecor,
-  IconGames,
-  IconHost,
-  IconGoodieBag,
-  IconCamera,
-} from "./icons";
+import { IconCheck, IconClock, IconStar, IconGift } from "./icons";
 
-const prizeItems = [
+const inclusions = [
+  "Full park access — zip lines, ropes courses, climbing walls, bumper cars, laser tag, tubing slides & more",
+  "Private party room with a dedicated host",
+  "Food & drinks for the whole crew",
+  "Birthday cake",
+  "Decorations, set up and ready to go",
+  "Goodie bags for every guest",
+];
+
+const highlights = [
   {
-    icon: IconMapPin,
-    title: "Party Venue",
-    desc: "A fully booked, family-friendly venue reserved just for your celebration.",
-    bg: "bg-party-blue-100",
+    icon: IconClock,
+    title: "Valid 12 Months",
+    desc: "Use it anytime in the next year — pick whatever date works for your family.",
   },
   {
-    icon: IconFood,
-    title: "Food & Drinks",
-    desc: "A full spread of kid-approved food and drinks for guests of all ages.",
-    bg: "bg-party-pink-100",
+    icon: IconStar,
+    title: "52 Chances to Win",
+    desc: "We draw one winner every week. Enter once and you're in all 52 drawings.",
   },
   {
-    icon: IconCake,
-    title: "Birthday Cake",
-    desc: "A custom-designed cake made for the guest of honor.",
-    bg: "bg-party-yellow-100",
-  },
-  {
-    icon: IconDecor,
-    title: "Decorations",
-    desc: "Balloons, streamers, and a full themed decor setup, done for you.",
-    bg: "bg-party-lavender-100",
-  },
-  {
-    icon: IconGames,
-    title: "Games & Activities",
-    desc: "Fun activities and games to keep every guest entertained.",
-    bg: "bg-party-mint-100",
-  },
-  {
-    icon: IconHost,
-    title: "Party Host",
-    desc: "A friendly host to run the show so parents can relax and celebrate too.",
-    bg: "bg-party-pink-100",
-  },
-  {
-    icon: IconGoodieBag,
-    title: "Goodie Bags",
-    desc: "Take-home goodie bags for every guest at the party.",
-    bg: "bg-party-blue-100",
-  },
-  {
-    icon: IconCamera,
-    title: "Photography Package",
-    desc: "Professional photos to capture every candle, cake smash, and smile.",
-    bg: "bg-party-yellow-100",
+    icon: IconGift,
+    title: "100% Free",
+    desc: "No purchase necessary, no entry fee, no catch.",
   },
 ];
 
 export default function PrizeSection() {
   return (
-    <section id="prize" aria-labelledby="prize-heading" className="bg-cream py-20 sm:py-28">
-      <div className="mx-auto max-w-6xl px-5 sm:px-8">
+    <section id="prize" aria-labelledby="prize-heading" className="bg-cream py-16 sm:py-24">
+      <div className="mx-auto max-w-4xl px-5 sm:px-8">
         <ScrollReveal className="mx-auto max-w-2xl text-center">
           <span className="inline-flex items-center gap-2 rounded-full bg-party-yellow-100 px-4 py-1.5 text-sm font-semibold text-ink">
-            What You Could Win
+            What You&apos;re Entering to Win
           </span>
           <h2 id="prize-heading" className="mt-4 font-display text-3xl font-extrabold text-ink sm:text-4xl">
-            A Complete Birthday Party, Ready to Go
+            A FREE All Access Birthday Party for 10 Kids
           </h2>
           <p className="mt-4 text-ink-light">
-            The winning family receives an entire celebration bundle — every
-            piece planned and paid for, all built around your birthday guest of
-            honor.
+            Everything on our All Access Birthday package — planned, hosted,
+            and paid for. An estimated $2,500+ value, completely free to the
+            winner.
           </p>
         </ScrollReveal>
 
-        <div className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {prizeItems.map((item, i) => (
-            <ScrollReveal key={item.title} delayMs={i * 60}>
-              <div className="group h-full rounded-3xl bg-white p-6 shadow-card transition-all duration-200 hover:-translate-y-1 hover:shadow-card-hover">
-                <div className={`flex h-14 w-14 items-center justify-center rounded-2xl ${item.bg}`}>
-                  <item.icon className="h-7 w-7 text-ink" />
-                </div>
-                <h3 className="mt-5 font-display text-lg font-bold text-ink">{item.title}</h3>
-                <p className="mt-2 text-sm text-ink-light">{item.desc}</p>
-              </div>
-            </ScrollReveal>
-          ))}
-        </div>
+        <ScrollReveal delayMs={80} className="mt-10 rounded-4xl bg-white p-6 shadow-card sm:p-10">
+          <ul className="grid grid-cols-1 gap-x-8 gap-y-3 sm:grid-cols-2">
+            {inclusions.map((item) => (
+              <li key={item} className="flex items-start gap-3 text-left text-ink-light">
+                <IconCheck className="mt-0.5 h-5 w-5 flex-shrink-0 text-emerald-500" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
 
-        <ScrollReveal className="mt-14 flex flex-col items-center justify-center gap-6 rounded-4xl bg-gradient-to-r from-party-pink-100 via-party-yellow-100 to-party-blue-100 px-6 py-10 text-center sm:px-12">
-          <div>
-            <p className="font-display text-sm font-semibold uppercase tracking-wide text-ink-light">
-              Estimated Total Prize Value
-            </p>
-            <p className="mt-2 font-display text-4xl font-extrabold text-ink sm:text-5xl">$2,500+</p>
+          <div className="mt-8 grid grid-cols-1 gap-4 border-t border-party-pink-100 pt-8 sm:grid-cols-3">
+            {highlights.map((item) => (
+              <div key={item.title} className="text-center sm:text-left">
+                <div className="mx-auto flex h-11 w-11 items-center justify-center rounded-2xl bg-party-pink-100 sm:mx-0">
+                  <item.icon className="h-6 w-6 text-party-pink-500" />
+                </div>
+                <p className="mt-3 font-display font-bold text-ink">{item.title}</p>
+                <p className="mt-1 text-sm text-ink-light">{item.desc}</p>
+              </div>
+            ))}
           </div>
-          <p className="max-w-xl text-ink-light">
-            Every item above is included — no add-ons, no hidden costs. Just an
-            unforgettable birthday, fully planned for one lucky family.
-          </p>
+        </ScrollReveal>
+
+        <ScrollReveal delayMs={140} className="mt-10 flex justify-center">
           <CTAButton size="lg" />
         </ScrollReveal>
       </div>

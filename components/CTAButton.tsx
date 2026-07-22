@@ -11,11 +11,11 @@ type CTAButtonProps = {
 
 /**
  * The single primary call-to-action used throughout the site.
- * Always labeled "See Giveaway" and always points at GIVEAWAY_URL,
+ * Always labeled "Enter Now to Win" and always points at GIVEAWAY_URL,
  * so every instance stays in sync if the destination ever changes.
  */
 export default function CTAButton({
-  children = "See Giveaway",
+  children = "Enter Now to Win",
   size = "md",
   className = "",
   ariaLabel,
@@ -33,7 +33,7 @@ export default function CTAButton({
     >
       {children}
       <span aria-hidden="true" className="inline-block transition-transform duration-200 group-hover:translate-x-0.5">
-        🎉
+        🎁
       </span>
     </Link>
   );

@@ -2,15 +2,15 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Giveaway Details | Birthday Party Giveaway",
+  title: "Enter to Win | Bolder Adventure Park Birthday Giveaway",
   description: "Full giveaway details, prize breakdown, and entry instructions.",
 };
 
 /**
- * Placeholder destination for every "See Giveaway" CTA on the landing page.
- * This is intentionally a simple informational page — replace with your
- * actual giveaway details / entry-instructions content. No forms, email
- * fields, or booking widgets live here or on the landing page itself.
+ * Placeholder destination for every "Enter Now to Win" CTA on the landing
+ * page. This is intentionally a simple informational page — replace with
+ * your actual giveaway details / entry-instructions content. No forms,
+ * email fields, or booking widgets live here or on the landing page itself.
  */
 export default function GiveawayPage() {
   return (

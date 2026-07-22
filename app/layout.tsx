@@ -7,9 +7,9 @@ import "./globals.css";
 // friendly, rounded feel and body text a clean, readable one.
 
 export const metadata: Metadata = {
-  title: "Birthday Party Giveaway | Win the Ultimate Birthday Party Experience",
+  title: "Win a FREE Birthday Party | Bolder Adventure Park Giveaway",
   description:
-    "Enter to win a fully planned birthday party — venue, cake, decorations, games, and gifts included. See the giveaway details and how to enter.",
+    "Enter for a chance to win a completely free All Access Birthday Party for 10 kids at Bolder Adventure Park. 100% free to enter, 52 weekly chances to win.",
 };
 
 export default function RootLayout({

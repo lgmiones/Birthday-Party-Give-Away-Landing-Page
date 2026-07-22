@@ -2,28 +2,27 @@ import Image from "next/image";
 import Link from "next/link";
 import CTAButton from "./CTAButton";
 import ScrollReveal from "./ScrollReveal";
-import { GIVEAWAY_URL } from "@/lib/constants";
 
-const stats = [
-  { value: "500+", label: "Families Entered" },
-  { value: "4.9★", label: "Average Rating" },
-  { value: "1", label: "Grand-Prize Winner" },
+const chips = [
+  { value: "52", label: "Chances to Win" },
+  { value: "12", label: "Months to Use It" },
+  { value: "$0", label: "Cost to Enter" },
 ];
 
 export default function HeroSection() {
   return (
     <section
       id="giveaway"
-      aria-label="Birthday party giveaway introduction"
+      aria-label="Free birthday party giveaway"
       className="relative overflow-hidden bg-gradient-to-b from-party-yellow-50 via-cream to-cream"
     >
       {/* Top trust bar */}
       <div className="relative z-10 flex flex-wrap items-center justify-center gap-x-3 gap-y-2 border-b border-party-pink-100 bg-white/70 px-4 py-2.5 text-center text-xs font-bold tracking-wide text-ink sm:text-sm">
         <span className="inline-flex items-center gap-1.5 rounded-full bg-party-yellow-200 px-3 py-1">
-          🎉 500+ Families Already Entered
+          🎁 100% FREE TO ENTER
         </span>
         <span className="inline-flex items-center gap-1.5 rounded-full border border-ink/10 bg-white px-3 py-1">
-          FAMILY-TRUSTED &middot; FREE TO ENTER
+          52 WEEKLY DRAWINGS &middot; 52 CHANCES TO WIN
         </span>
       </div>
 
@@ -70,14 +69,14 @@ export default function HeroSection() {
       <div className="relative mx-auto max-w-4xl px-5 pb-14 pt-4 text-center sm:px-8 sm:pb-20 sm:pt-6">
         <ScrollReveal>
           <h1 className="mx-auto max-w-3xl font-display text-4xl font-bold leading-[1.15] text-ink sm:text-5xl lg:text-6xl">
-            The Birthday Party Your Kids Will{" "}
-            <em className="text-party-pink-500">Never</em> Stop{" "}
-            <span className="marker-highlight">Talking About.</span>
+            You Could <em className="text-party-pink-500">Win</em> a{" "}
+            <span className="marker-highlight">FREE Birthday Party</span> Your
+            Kids Will Never Forget.
           </h1>
 
           <p className="mx-auto mt-6 max-w-xl text-lg text-ink-light">
-            One lucky family wins a completely planned birthday celebration —
-            venue, cake, decorations, games, and gifts, all taken care of.
+            One winner takes home a completely free All Access Birthday Party
+            for 10 kids at Bolder Adventure Park. No purchase, no catch.
           </p>
 
           <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
@@ -86,74 +85,66 @@ export default function HeroSection() {
               href="#prize"
               className="font-semibold text-ink-light underline decoration-party-pink-300 decoration-2 underline-offset-4 transition-colors hover:text-party-pink-500"
             >
-              View Prize Details
+              See What You Win
             </Link>
           </div>
         </ScrollReveal>
 
-        {/* "Video style" preview card, echoing the reference layout */}
+        {/* Video placeholder — drop your real explainer video in here.
+            Swap the <Image> + play-button block below for a <video> tag or
+            an <iframe> embed (YouTube/Vimeo) once it's ready; everything
+            else (border, badge, caption) can stay as-is. */}
         <ScrollReveal delayMs={120} className="relative mx-auto mt-12 max-w-2xl">
-          <Link
-            href={GIVEAWAY_URL}
-            aria-label="See the full giveaway details"
-            className="group relative block overflow-hidden rounded-4xl border-4 border-white bg-ink shadow-soft transition-transform duration-300 hover:-translate-y-1"
-          >
+          <div className="group relative block cursor-pointer overflow-hidden rounded-4xl border-4 border-white bg-ink shadow-soft">
             <div className="relative aspect-video w-full">
               <Image
                 src="/images/images/Reviews-birthday-parties.jpg"
-                alt="Kids cheering at a birthday party at Bolder Adventure Park, with a Happy Birthday balloon banner and cake"
+                alt="Video placeholder — kids cheering at a birthday party at Bolder Adventure Park"
                 fill
                 priority
-                className="object-cover"
+                className="object-cover opacity-60 transition-opacity duration-300 group-hover:opacity-50"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-ink/40 via-transparent to-transparent" />
-              <span className="absolute inset-0 flex items-center justify-center">
-                <span className="flex h-16 w-16 items-center justify-center rounded-full bg-white/90 shadow-soft transition-transform duration-200 group-hover:scale-110 sm:h-20 sm:w-20">
-                  <svg viewBox="0 0 24 24" className="ml-1 h-7 w-7 text-cta sm:h-8 sm:w-8" fill="currentColor">
-                    <path d="M8 5v14l11-7z" />
+              <div className="absolute inset-0 bg-gradient-to-t from-ink/75 via-ink/25 to-ink/10" />
+
+              {/* Play button */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <span className="flex h-16 w-16 items-center justify-center rounded-full bg-white shadow-card transition-transform duration-300 group-hover:scale-110 sm:h-20 sm:w-20">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="ml-1 text-party-pink-500 sm:h-7 sm:w-7">
+                    <path d="M6 4.5v15l13-7.5-13-7.5Z" fill="currentColor" />
                   </svg>
                 </span>
-              </span>
+              </div>
+
+              {/* Caption + tag */}
+              <div className="absolute inset-x-0 bottom-0 flex items-center justify-between gap-3 p-4 sm:p-5">
+                <span className="rounded-full bg-white/90 px-3 py-1.5 text-xs font-bold text-ink sm:text-sm">
+                  How the Giveaway Works
+                </span>
+                <span className="rounded-full bg-black/40 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wide text-white">
+                  Video
+                </span>
+              </div>
             </div>
-          </Link>
+          </div>
 
           <span className="sticker-badge absolute -right-3 -top-5 z-10 rounded-2xl bg-cta px-4 py-2 font-display text-sm font-bold text-white shadow-card sm:-right-6 sm:text-base">
-            Limited Entries!
+            1 Entry = 52 Chances!
           </span>
 
           <p className="mt-4 text-sm text-ink-light">
-            Peek at what one winning family&apos;s birthday could look like —
-            then see the giveaway for yourself.
+            Watch a quick video on exactly what you could win — fully
+            planned, fully paid for, completely free.
           </p>
         </ScrollReveal>
 
-        {/* Stat row */}
+        {/* Giveaway mechanics chips */}
         <ScrollReveal delayMs={180} className="mx-auto mt-12 flex max-w-xl items-center justify-center divide-x divide-party-pink-100">
-          {stats.map((stat) => (
-            <div key={stat.label} className="flex-1 px-3 sm:px-6">
-              <p className="font-display text-2xl font-bold text-ink sm:text-3xl">{stat.value}</p>
-              <p className="mt-1 text-xs font-medium text-ink-light sm:text-sm">{stat.label}</p>
+          {chips.map((chip) => (
+            <div key={chip.label} className="flex-1 px-3 sm:px-6">
+              <p className="font-display text-2xl font-bold text-ink sm:text-3xl">{chip.value}</p>
+              <p className="mt-1 text-xs font-medium text-ink-light sm:text-sm">{chip.label}</p>
             </div>
           ))}
-        </ScrollReveal>
-
-        {/* Prize / urgency bar */}
-        <ScrollReveal
-          delayMs={220}
-          className="mx-auto mt-10 flex max-w-2xl flex-col items-center justify-between gap-4 rounded-3xl bg-white p-4 shadow-card sm:flex-row sm:gap-6 sm:p-5"
-        >
-          <div className="flex items-center gap-4">
-            <span aria-hidden="true" className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-2xl bg-party-yellow-100 text-2xl">
-              🎁
-            </span>
-            <div className="text-left">
-              <p className="text-xs font-semibold uppercase tracking-wide text-ink-light">Total Prize Value</p>
-              <p className="font-display text-xl font-bold text-ink sm:text-2xl">
-                $2,500+ <span className="text-sm font-semibold text-party-pink-500">&middot; 100% Free to Enter</span>
-              </p>
-            </div>
-          </div>
-          <CTAButton size="md" className="w-full sm:w-auto" />
         </ScrollReveal>
       </div>
     </section>

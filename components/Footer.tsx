@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { GIVEAWAY_URL, NAV_LINKS, SITE_NAME } from "@/lib/constants";
 
@@ -7,12 +8,15 @@ export default function Footer() {
   return (
     <footer className="border-t border-party-pink-100 bg-white">
       <div className="mx-auto max-w-6xl px-5 py-10 sm:px-8">
-        <div className="flex flex-col items-start justify-between gap-8 sm:flex-row sm:items-center">
-          <div className="flex items-center gap-2 font-display text-lg font-bold text-ink">
-            <span aria-hidden="true" className="flex h-8 w-8 items-center justify-center rounded-full bg-party-pink-200">
-              🎂
-            </span>
-            {SITE_NAME}
+        <div className="flex flex-col items-center justify-between gap-8 sm:flex-row">
+          <div className="flex items-center justify-center">
+            <Image
+              src="/images/images/bolder-logo.png"
+              alt={SITE_NAME}
+              width={340}
+              height={216}
+              className="h-16 w-auto sm:h-20"
+            />
           </div>
 
           <ul className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-ink-light">
@@ -25,7 +29,7 @@ export default function Footer() {
             ))}
             <li>
               <Link href={GIVEAWAY_URL} className="hover:text-party-pink-500">
-                See Giveaway
+                Enter Now to Win
               </Link>
             </li>
           </ul>

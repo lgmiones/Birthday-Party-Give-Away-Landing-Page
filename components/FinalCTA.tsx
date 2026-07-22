@@ -15,11 +15,11 @@ export default function FinalCTA() {
 
           <div className="relative">
             <h2 id="final-cta-heading" className="mx-auto max-w-2xl font-display text-3xl font-extrabold text-ink sm:text-4xl lg:text-5xl">
-              Your Dream Birthday Party Could Be One Click Away
+              Ready to Win Your Kid&apos;s Best Birthday Ever?
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-ink-light">
-              Don&apos;t miss your chance to win a completely planned celebration for
-              your family. See what&apos;s included and how to enter.
+              It takes one entry. One entry gets you into all 52 weekly
+              drawings — completely free.
             </p>
             <div className="mt-8 flex justify-center">
               <CTAButton size="lg" />
