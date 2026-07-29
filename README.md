@@ -1,12 +1,13 @@
-# Free Birthday Party Giveaway — Landing Page
+# Free Birthday Party Giveaway Landing Page
 
 A lean, single-offer Next.js (App Router) + TypeScript + Tailwind CSS
 marketing landing page for the Bolder Adventure Park birthday giveaway. Its
-only job is to get cold ad traffic to click **Enter Now to Win** for a free
-All Access Birthday Party for 10 kids.
+only job is to get cold ad traffic to enter for a free All Access Birthday
+Party for 10 kids.
 
-Every "Enter Now to Win" call-to-action points at `GIVEAWAY_URL`
-(`lib/constants.ts`, currently `/giveaway`).
+Styled to sit close to bolderadventurepark.com's own look: a condensed,
+uppercase display face, a punchy orange CTA color, and alternating white and
+near-black sections, instead of an invented brand look.
 
 ## Getting started
 
@@ -36,60 +37,61 @@ commit for you, just add the remote and push.)
 ### 2. Deploy to Vercel
 
 - Go to [vercel.com/new](https://vercel.com/new) and import the GitHub repo.
-- Framework preset: **Next.js** (auto-detected — no config needed).
+- Framework preset: **Next.js** (auto-detected, no config needed).
 - No environment variables are required; click **Deploy**.
 - Every push to `main` will auto-deploy. Pull requests get their own preview
   URL automatically.
 
-Image optimization (the `next/image` calls in `HeroSection` and
-`AboutBolderSection`) is handled automatically by Vercel's infrastructure at
-request time — nothing extra to configure. If you instead self-host with
-`npm run build && npm run start` on your own server, install `sharp`
-(`npm install sharp`) so local optimization has a native encoder to use.
+Image optimization (the `next/image` calls throughout) is handled
+automatically by Vercel's infrastructure at request time, nothing extra to
+configure. If you instead self-host with `npm run build && npm run start`
+on your own server, install `sharp` (`npm install sharp`) so local
+optimization has a native encoder to use.
 
 ## Page structure
 
-The page is intentionally short — five sections, no forms, one repeated CTA:
+Everything lives on one page now, no separate routes. It follows Kai's
+requested flow: headline, sub headline, video, button, form, more about
+Bolder, social proof.
 
 ```
 app/
   layout.tsx        Root layout, metadata
-  page.tsx           Hero → Prize → About Bolder → FAQ → Final CTA
+  page.tsx           Hero -> Entry Form -> Prize -> About Bolder -> Social Proof
   globals.css        Tailwind + scroll-reveal + reduced-motion styles
-  giveaway/page.tsx  Placeholder destination for all "Enter Now to Win" CTAs
 components/
-  HeroSection.tsx         Win-focused headline, prize teaser, entry mechanics chips
-  PrizeSection.tsx        What's included + valid 12 months / 52 weekly drawings / free
-  AboutBolderSection.tsx  Brief "what is Bolder" blurb + attraction photo strip
-  AttractionMarquee.tsx   Endless auto-scrolling filmstrip of attraction photos
-  FAQSection.tsx          4-question accessible accordion (single-open)
-  FinalCTA.tsx            Closing banner CTA
-  Footer.tsx
-  CTAButton.tsx          Reusable "Enter Now to Win" button, always links to GIVEAWAY_URL
-  ScrollReveal.tsx       IntersectionObserver-based reveal-on-scroll wrapper
-  icons.tsx              Hand-rolled inline SVG icon set (no icon library)
+  HeroSection.tsx         Headline, sub headline, video placeholder, CTA button
+  EntryForm.tsx           Entry form placeholder (see note below on wiring it up)
+  PrizeSection.tsx        What you'd win, with the $1,000 value breakdown
+  AboutBolderSection.tsx  Short "more about Bolder" blurb, dark section
+  AttractionCarousel.tsx  Labeled carousel of all 12 real Bolder attractions
+  SocialProof.tsx         Real 5-star guest reviews, shown as a carousel
+  Footer.tsx              Dark footer, centered logo
+  CTAButton.tsx           Reusable button, anchors down to #enter on the page
+  AnnouncementBanner.tsx  Scrolling ticker strip at the very top of the page
+  ScrollReveal.tsx        IntersectionObserver-based reveal-on-scroll wrapper
+  icons.tsx               Hand-rolled inline SVG icon set (no icon library)
 lib/
-  constants.ts       GIVEAWAY_URL, nav links, site name
+  constants.ts       Site name
 public/images/       Bolder Adventure Park logo + photography used on the page
 ```
 
-Every file in `components/` is imported and rendered somewhere — no unused
-drafts left in the tree. (Earlier longer-form sections — `Navbar.tsx`,
-`BenefitsSection.tsx`, `HowItWorksSection.tsx`, `SocialProofSection.tsx`,
-and the original dot/arrow `AttractionCarousel.tsx` — were removed once the
-page settled on its current lean structure.)
+Every file in `components/` is imported and rendered somewhere, no unused
+drafts left in the tree.
 
 ## Notes
 
-- No forms, email/phone fields, or payment UI anywhere on the landing page —
-  every CTA is a link to `GIVEAWAY_URL`.
-- Update `GIVEAWAY_URL` in `lib/constants.ts` to repoint every CTA at once.
-- Update the exact CTA wording in one place: `CTAButton.tsx`'s default
+- **The entry form is a placeholder, not wired to a backend.** `EntryForm.tsx`
+  renders a labeled placeholder box marking exactly where to drop in the
+  real embed (a Google Form, Gleam, Rafflecopter, or a custom widget).
+- There's no dedicated official-rules section on the page right now — add
+  one (with real legal review) before the giveaway actually launches.
+- Update the CTA button's default label in one place: `CTAButton.tsx`'s
   `children` prop.
 - Respects `prefers-reduced-motion` (see `globals.css`) and keeps visible
   focus states throughout.
 - `public/images/` also contains the original source photo dump from Bolder
   Adventure Park (attraction, venue, and event photography) alongside the
   handful of files actually used on the page. Only the used files are
-  tracked in git — see `.gitignore` — so the rest stays available locally
-  for future sections without bloating the repo or the Vercel build.
+  tracked in git, see `.gitignore`, so the rest stays available locally for
+  future sections without bloating the repo or the Vercel build.

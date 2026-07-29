@@ -8,48 +8,38 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        cream: "#FFFCF6",
-        "party-pink": {
-          50: "#FFF3F7",
-          100: "#FFE3ED",
-          200: "#FFC7DB",
-          300: "#FF9EC0",
-          400: "#FF7AA8",
-          500: "#F0568C",
+        // Repointed to mirror the real bolderadventurepark.com system: warm
+        // near-black sections, a punchy orange-red CTA, and an amber accent
+        // for small tags/labels — no more pastel pink/lavender/blue.
+        cream: "#FBFAF8",
+        brand: {
+          50: "#FFF1EC",
+          100: "#FFE0D3",
+          200: "#FFC0A6",
+          300: "#FF9970",
+          400: "#FF6B3D",
+          500: "#FF4B1F",
+          600: "#E63C12",
+          700: "#BE300E",
         },
-        "party-blue": {
-          50: "#EFFAFF",
-          100: "#DBF3FF",
-          200: "#B7E7FF",
-          300: "#8CD8FF",
-          400: "#5CC4F5",
+        gold: {
+          300: "#FFD27A",
+          500: "#F2A81D",
         },
-        "party-lavender": {
-          50: "#F6F2FF",
-          100: "#EBE0FF",
-          200: "#D8C6FF",
-          300: "#BFA3FF",
-          400: "#A683F5",
-        },
-        "party-yellow": {
-          50: "#FFFBEB",
-          100: "#FFF3C4",
-          200: "#FFE68A",
-          300: "#FFD65C",
-        },
-        "party-mint": {
-          50: "#EFFFF8",
-          100: "#D6FFEE",
-          200: "#ADF5D9",
+        night: {
+          DEFAULT: "#131315",
+          800: "#1C1C1F",
+          900: "#0F0F11",
+          950: "#08080A",
         },
         cta: {
-          DEFAULT: "#FF5D6C",
-          hover: "#F0404F",
-          light: "#FFE3E5",
+          DEFAULT: "#FF4B1F",
+          hover: "#E63C12",
+          light: "#FFE0D3",
         },
         ink: {
-          DEFAULT: "#3A2E45",
-          light: "#6B5D77",
+          DEFAULT: "#16161A",
+          light: "#55555C",
         },
       },
       fontFamily: {
@@ -57,9 +47,9 @@ const config: Config = {
         body: ["var(--font-body)", "system-ui", "sans-serif"],
       },
       boxShadow: {
-        soft: "0 10px 30px -10px rgba(58, 46, 69, 0.15)",
-        card: "0 8px 24px -8px rgba(58, 46, 69, 0.12)",
-        "card-hover": "0 16px 36px -12px rgba(58, 46, 69, 0.2)",
+        soft: "0 10px 30px -10px rgba(10, 10, 12, 0.18)",
+        card: "0 8px 24px -8px rgba(10, 10, 12, 0.14)",
+        "card-hover": "0 16px 36px -12px rgba(10, 10, 12, 0.22)",
       },
       borderRadius: {
         "4xl": "2rem",

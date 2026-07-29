@@ -1,77 +1,108 @@
-import CTAButton from "./CTAButton";
 import ScrollReveal from "./ScrollReveal";
-import { IconCheck, IconClock, IconStar, IconGift } from "./icons";
+import { IconCheck } from "./icons";
 
-const inclusions = [
-  "Full park access — zip lines, ropes courses, climbing walls, bumper cars, laser tag, tubing slides & more",
-  "Private party room with a dedicated host",
-  "Food & drinks for the whole crew",
-  "Birthday cake",
-  "Decorations, set up and ready to go",
-  "Goodie bags for every guest",
+// Pulled directly from Bolder's real All Access Party package and the
+// "All of our birthday packages include" section on bolderadventurepark.com,
+// plus the arcade cards and photographer Paul confirmed are part of the
+// $1,000 prize, so a winner sees exactly what they're actually getting.
+const packageIncludes = [
+  "The full All Access Party for 10 guests, birthday child included",
+  "A private 45-minute party table reservation",
+  "2 parent passes",
+  "Pizza meal for the whole group",
+  "Unlimited drinks, two flavor choices, refilled all party long",
+  "Bring your own cake, we'll have the table ready",
+  "A $20 Arcade Card for every guest, 10 total",
+  "A professional photographer capturing the whole party",
 ];
 
-const highlights = [
-  {
-    icon: IconClock,
-    title: "Valid 12 Months",
-    desc: "Use it anytime in the next year — pick whatever date works for your family.",
-  },
-  {
-    icon: IconStar,
-    title: "52 Chances to Win",
-    desc: "We draw one winner every week. Enter once and you're in all 52 drawings.",
-  },
-  {
-    icon: IconGift,
-    title: "100% Free",
-    desc: "No purchase necessary, no entry fee, no catch.",
-  },
+const accessTo = [
+  "Every Base Camp attraction",
+  'Ropes Course & Zip Lines (48" height minimum)',
+  'Via Ferrata, the climb across the Bolder Mountains (48" height and 88 lbs. minimum)',
 ];
 
+// The $1,000 figure, broken down exactly the way Paul priced it out, so the
+// value reads as verifiable rather than a round-number marketing claim.
+const valueBreakdown = [
+  { label: "All Access Party", amount: "$449" },
+  { label: "$20 Arcade Card × 10 guests", amount: "$200" },
+  { label: "Professional Party Photographer", amount: "$350" },
+];
+
+/**
+ * One prize, drawn every month: the $1,000 Ultimate Bolder Birthday. The
+ * two-column "Package Includes / Access To" split mirrors the real All
+ * Access Party page on bolderadventurepark.com, and the value breakdown at
+ * the bottom shows exactly how the $1,000 figure adds up, so it reads as
+ * concrete and verifiable rather than an invented round number.
+ */
 export default function PrizeSection() {
   return (
-    <section id="prize" aria-labelledby="prize-heading" className="bg-cream py-16 sm:py-24">
-      <div className="mx-auto max-w-4xl px-5 sm:px-8">
-        <ScrollReveal className="mx-auto max-w-2xl text-center">
-          <span className="inline-flex items-center gap-2 rounded-full bg-party-yellow-100 px-4 py-1.5 text-sm font-semibold text-ink">
-            What You&apos;re Entering to Win
+    <section id="prize" aria-labelledby="prize-heading" className="bg-white py-16 sm:py-20">
+      <div className="mx-auto max-w-3xl px-5 sm:px-8">
+        <ScrollReveal className="text-center">
+          <span className="inline-flex items-center gap-2 rounded-md bg-gold-500 px-3 py-1 text-xs font-bold uppercase tracking-wide text-night">
+            The Grand Prize, Drawn Every Month
           </span>
-          <h2 id="prize-heading" className="mt-4 font-display text-3xl font-extrabold text-ink sm:text-4xl">
-            A FREE All Access Birthday Party for 10 Kids
+          <h2 id="prize-heading" className="mt-4 font-display text-4xl uppercase tracking-tight text-ink sm:text-5xl">
+            The $1,000 Ultimate
+            <br />
+            <span className="text-cta">Bolder Birthday</span>
           </h2>
-          <p className="mt-4 text-ink-light">
-            Everything on our All Access Birthday package — planned, hosted,
-            and paid for. An estimated $2,500+ value, completely free to the
-            winner.
+          <p className="mx-auto mt-4 max-w-lg text-ink-light">
+            One winner a month gets the whole thing planned, hosted, and
+            paid for. Here&apos;s exactly what&apos;s included.
           </p>
         </ScrollReveal>
 
-        <ScrollReveal delayMs={80} className="mt-10 rounded-4xl bg-white p-6 shadow-card sm:p-10">
-          <ul className="grid grid-cols-1 gap-x-8 gap-y-3 sm:grid-cols-2">
-            {inclusions.map((item) => (
-              <li key={item} className="flex items-start gap-3 text-left text-ink-light">
-                <IconCheck className="mt-0.5 h-5 w-5 flex-shrink-0 text-emerald-500" />
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
+        <ScrollReveal delayMs={100} className="mt-8 rounded-lg bg-cream p-6 shadow-card sm:p-8">
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
+            <div>
+              <p className="font-body text-sm font-bold uppercase tracking-wide text-ink">
+                Package Includes
+              </p>
+              <ul className="mt-3 space-y-3">
+                {packageIncludes.map((item) => (
+                  <li key={item} className="flex items-start gap-3 text-left text-ink-light">
+                    <IconCheck className="mt-0.5 h-5 w-5 flex-shrink-0 text-cta" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <p className="font-body text-sm font-bold uppercase tracking-wide text-ink">
+                Access To
+              </p>
+              <ul className="mt-3 space-y-3">
+                {accessTo.map((item) => (
+                  <li key={item} className="flex items-start gap-3 text-left text-ink-light">
+                    <IconCheck className="mt-0.5 h-5 w-5 flex-shrink-0 text-cta" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
 
-          <div className="mt-8 grid grid-cols-1 gap-4 border-t border-party-pink-100 pt-8 sm:grid-cols-3">
-            {highlights.map((item) => (
-              <div key={item.title} className="text-center sm:text-left">
-                <div className="mx-auto flex h-11 w-11 items-center justify-center rounded-2xl bg-party-pink-100 sm:mx-0">
-                  <item.icon className="h-6 w-6 text-party-pink-500" />
-                </div>
-                <p className="mt-3 font-display font-bold text-ink">{item.title}</p>
-                <p className="mt-1 text-sm text-ink-light">{item.desc}</p>
+          <dl className="mt-8 space-y-1.5 border-t border-ink/10 pt-5 text-sm">
+            {valueBreakdown.map((line) => (
+              <div key={line.label} className="flex items-baseline justify-between text-ink-light">
+                <dt>{line.label}</dt>
+                <dd className="font-semibold text-ink">{line.amount}</dd>
               </div>
             ))}
-          </div>
-        </ScrollReveal>
+            <div className="flex items-baseline justify-between border-t border-ink/10 pt-2">
+              <dt className="font-bold uppercase tracking-wide text-ink">Total Prize Value</dt>
+              <dd className="font-display text-2xl text-cta">$999</dd>
+            </div>
+          </dl>
 
-        <ScrollReveal delayMs={140} className="mt-10 flex justify-center">
-          <CTAButton size="lg" />
+          <p className="mt-6 text-center text-xs text-ink-light/80">
+            One winner drawn every month. Height and weight minimums
+            apply on Vertical Climbing Adventures, for guest safety.
+          </p>
         </ScrollReveal>
       </div>
     </section>

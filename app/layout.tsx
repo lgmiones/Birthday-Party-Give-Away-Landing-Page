@@ -4,12 +4,12 @@ import "./globals.css";
 // Font stacks are defined as CSS custom properties in globals.css using
 // widely-available system fonts. This keeps the build fully self-contained
 // (no external font fetch at build time) while still giving headings a
-// friendly, rounded feel and body text a clean, readable one.
+// bold, condensed poster feel and body text a clean, readable one.
 
 export const metadata: Metadata = {
-  title: "Win a FREE Birthday Party | Bolder Adventure Park Giveaway",
+  title: "Win a Free Birthday Party | Bolder Adventure Park Giveaway",
   description:
-    "Enter for a chance to win a completely free All Access Birthday Party for 10 kids at Bolder Adventure Park. 100% free to enter, 52 weekly chances to win.",
+    "Enter for a chance to win the $1,000 Ultimate Bolder Birthday: a free All Access Party, arcade cards, and a professional photographer at Bolder Adventure Park. Drawn every month, 100% free to enter.",
 };
 
 export default function RootLayout({

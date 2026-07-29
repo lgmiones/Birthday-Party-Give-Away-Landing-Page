@@ -56,7 +56,7 @@ next-env.d.ts
 /public/images/videos/
 /public/images/carousel-images/
 
-# All 12 attraction photos are used by AttractionMarquee.tsx, so the whole
+# All 12 attraction photos are used by AttractionCarousel.tsx, so the whole
 # folder is tracked (untouched by the exclusions above) — nothing to ignore
 # here anymore.
 

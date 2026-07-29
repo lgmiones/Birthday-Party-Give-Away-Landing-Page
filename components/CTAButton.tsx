@@ -1,6 +1,4 @@
-import Link from "next/link";
 import type { ReactNode } from "react";
-import { GIVEAWAY_URL } from "@/lib/constants";
 
 type CTAButtonProps = {
   children?: ReactNode;
@@ -10,9 +8,10 @@ type CTAButtonProps = {
 };
 
 /**
- * The single primary call-to-action used throughout the site.
- * Always labeled "Enter Now to Win" and always points at GIVEAWAY_URL,
- * so every instance stays in sync if the destination ever changes.
+ * The single primary call-to-action on the site. Always labeled "Enter Now
+ * to Win" and always scrolls down to the entry form (id="enter") on the
+ * same page, per Kai's single-flow layout: headline, subhead, video,
+ * button, form, all on one page, no separate route.
  */
 export default function CTAButton({
   children = "Enter Now to Win",
@@ -26,15 +25,18 @@ export default function CTAButton({
       : "px-6 py-3 text-base";
 
   return (
-    <Link
-      href={GIVEAWAY_URL}
+    <a
+      href="#enter"
       aria-label={ariaLabel}
-      className={`inline-flex items-center justify-center gap-2 rounded-full bg-cta font-display font-semibold text-white shadow-soft transition-all duration-200 hover:bg-cta-hover hover:shadow-card-hover hover:-translate-y-0.5 active:translate-y-0 ${sizeClasses} ${className}`}
+      className={`group inline-flex items-center justify-center gap-2.5 rounded-md bg-cta font-display uppercase tracking-wide text-white shadow-soft transition-all duration-200 hover:bg-cta-hover hover:shadow-card-hover hover:-translate-y-0.5 active:translate-y-0 ${sizeClasses} ${className}`}
     >
       {children}
-      <span aria-hidden="true" className="inline-block transition-transform duration-200 group-hover:translate-x-0.5">
-        🎁
+      <span
+        aria-hidden="true"
+        className="inline-block text-lg leading-none transition-transform duration-200 group-hover:translate-x-1"
+      >
+        →
       </span>
-    </Link>
+    </a>
   );
 }
