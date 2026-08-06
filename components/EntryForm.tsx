@@ -1,13 +1,17 @@
 import ScrollReveal from "./ScrollReveal";
 import { IconCheck } from "./icons";
 
+// Kai's Patch opt-in form (the "different one from the main one" — the
+// header tracking pixel for this same form lives in app/layout.tsx).
+const PATCH_FORM_URL =
+  "https://addons.patchretention.com/form/6a746f262960ef3d03df0761/700670";
+
 /**
- * Placeholder for the real entry form, sized and positioned to match where
- * the actual embed (Google Form, Gleam, Rafflecopter, or a custom widget)
- * will go, embedded directly on the single homepage per Kai's flow. Swap
- * the dashed box below for the real embed once it's ready — everything
- * else (the section, the heading, the id used by the "Enter Now to Win"
- * button) can stay exactly as-is.
+ * The real entry form, embedded directly on the single homepage per Kai's
+ * flow (no separate page/click-through). Patch hosts the form itself as a
+ * standalone page built to be iframed, so this wraps it in a responsive
+ * frame sized to roughly match the form's own layout. If Patch's form
+ * height changes, bump the min-height below to match.
  */
 export default function EntryForm() {
   return (
@@ -31,20 +35,14 @@ export default function EntryForm() {
             </p>
           </div>
 
-          <div className="mt-4 flex flex-col items-center gap-3 rounded-md border-2 border-dashed border-cta/40 bg-brand-50 px-6 py-10 text-center">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true" className="text-cta">
-              <rect x="5" y="4" width="14" height="17" rx="2.5" stroke="currentColor" strokeWidth="1.8" />
-              <rect x="8.5" y="2.5" width="7" height="3.5" rx="1.5" fill="currentColor" />
-              <path d="M8.5 11h7M8.5 15h4.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-            </svg>
-            <p className="text-sm font-bold uppercase tracking-wide text-cta">
-              Entry Form Placeholder
-            </p>
-            <p className="text-sm text-ink-light">
-              Embed the real entry form here once it&apos;s ready, a Google
-              Form, Gleam, Rafflecopter embed, or a custom widget all work.
-              This box just marks where it goes.
-            </p>
+          <div className="mt-4 overflow-hidden rounded-md">
+            <iframe
+              src={PATCH_FORM_URL}
+              title="Bolder Birthday Giveaway entry form"
+              className="w-full"
+              style={{ minHeight: 520, border: "none" }}
+              loading="lazy"
+            />
           </div>
 
           <p className="mt-4 text-center text-xs text-ink-light">

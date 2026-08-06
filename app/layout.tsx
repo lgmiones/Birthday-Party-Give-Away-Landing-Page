@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import "./globals.css";
 
 // Font stacks are defined as CSS custom properties in globals.css using
@@ -19,7 +20,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="font-body antialiased">{children}</body>
+      <body className="font-body antialiased">
+        {children}
+        {/* Patch tracking pixel — Kai's header pixel for the giveaway
+            opt-in form, loaded after the page is interactive so it never
+            blocks the initial render. */}
+        <Script
+          src="https://cdn.patchretention.com/pixel/700670/pixel.js"
+          strategy="afterInteractive"
+        />
+      </body>
     </html>
   );
 }

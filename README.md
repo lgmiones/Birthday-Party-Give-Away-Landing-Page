@@ -81,9 +81,11 @@ drafts left in the tree.
 
 ## Notes
 
-- **The entry form is a placeholder, not wired to a backend.** `EntryForm.tsx`
-  renders a labeled placeholder box marking exactly where to drop in the
-  real embed (a Google Form, Gleam, Rafflecopter, or a custom widget).
+- **The entry form is Kai's real Patch form**, embedded via an iframe in
+  `EntryForm.tsx` (`https://addons.patchretention.com/form/.../700670`).
+  Kai's tracking pixel for this same form is loaded separately in
+  `app/layout.tsx` via `next/script`. If Patch changes the form's height,
+  bump the iframe's `minHeight` in `EntryForm.tsx` to match.
 - There's no dedicated official-rules section on the page right now — add
   one (with real legal review) before the giveaway actually launches.
 - Update the CTA button's default label in one place: `CTAButton.tsx`'s
