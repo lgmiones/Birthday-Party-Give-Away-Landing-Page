@@ -1,19 +1,25 @@
 import ScrollReveal from "./ScrollReveal";
 import { IconCheck } from "./icons";
 
-// Kai's Patch opt-in form (the "different one from the main one" — the
-// header tracking pixel for this same form lives in app/layout.tsx).
-const PATCH_FORM_URL =
+// Kai's original Patch opt-in form, used on the main (with-VSL) page — the
+// header tracking pixel for this same form lives in app/layout.tsx. The
+// no-VSL "B version" page (app/b/page.tsx) passes Kai's second Patch form
+// link via the formUrl prop instead.
+const DEFAULT_PATCH_FORM_URL =
   "https://addons.patchretention.com/form/6a746f262960ef3d03df0761/700670";
 
+type EntryFormProps = {
+  formUrl?: string;
+};
+
 /**
- * The real entry form, embedded directly on the single homepage per Kai's
- * flow (no separate page/click-through). Patch hosts the form itself as a
- * standalone page built to be iframed, so this wraps it in a responsive
- * frame sized to roughly match the form's own layout. If Patch's form
- * height changes, bump the min-height below to match.
+ * The real entry form, embedded directly on the page (no separate page/
+ * click-through). Patch hosts the form itself as a standalone page built
+ * to be iframed, so this wraps it in a responsive frame sized to roughly
+ * match the form's own layout. If Patch's form height changes, bump the
+ * min-height below to match.
  */
-export default function EntryForm() {
+export default function EntryForm({ formUrl = DEFAULT_PATCH_FORM_URL }: EntryFormProps) {
   return (
     <section id="enter" aria-label="Entry form" className="bg-cream pb-16 pt-10 sm:pb-20 sm:pt-14">
       <div className="mx-auto max-w-2xl px-5 sm:px-8">
@@ -37,7 +43,7 @@ export default function EntryForm() {
 
           <div className="mt-5 overflow-hidden rounded-md">
             <iframe
-              src={PATCH_FORM_URL}
+              src={formUrl}
               title="Bolder Birthday Giveaway entry form"
               className="w-full"
               style={{ minHeight: 760, border: "none" }}

@@ -50,18 +50,22 @@ optimization has a native encoder to use.
 
 ## Page structure
 
-Everything lives on one page now, no separate routes. It follows Kai's
-requested flow: headline, sub headline, video, button, form, more about
-Bolder, social proof.
+Everything lives on one page, no separate routes. It follows Kai's
+requested flow: banner, headline, sub headline, real VSL video, button,
+form, more about Bolder, social proof.
+
+The "B" A/B-test variant (no VSL, form at the very top) is a separate
+project — see the sibling `birthday-giveaway-b` folder — so each version
+deploys and tracks independently.
 
 ```
 app/
-  layout.tsx        Root layout, metadata
-  page.tsx           Hero -> Entry Form -> Prize -> About Bolder -> Social Proof
-  globals.css        Tailwind + scroll-reveal + reduced-motion styles
+  layout.tsx        Root layout, metadata, header tracking scripts (Bolder tag + Meta Pixel)
+  page.tsx           Banner -> Hero (incl. VSL) -> Entry Form -> Prize -> About Bolder -> Social Proof
+  globals.css        Tailwind + scroll-reveal + reduced-motion + Wistia placeholder styles
 components/
-  HeroSection.tsx         Headline, sub headline, video placeholder, CTA button
-  EntryForm.tsx           Entry form placeholder (see note below on wiring it up)
+  HeroSection.tsx         Headline, sub headline, real Wistia VSL embed, CTA button
+  EntryForm.tsx           Real Patch form (iframe), takes an optional formUrl prop
   PrizeSection.tsx        What you'd win, with the $1,000 value breakdown
   AboutBolderSection.tsx  Short "more about Bolder" blurb, dark section
   AttractionCarousel.tsx  Labeled carousel of all 12 real Bolder attractions
@@ -71,6 +75,8 @@ components/
   AnnouncementBanner.tsx  Scrolling ticker strip at the very top of the page
   ScrollReveal.tsx        IntersectionObserver-based reveal-on-scroll wrapper
   icons.tsx               Hand-rolled inline SVG icon set (no icon library)
+types/
+  wistia.d.ts        JSX typing for the <wistia-player> custom element
 lib/
   constants.ts       Site name
 public/images/       Bolder Adventure Park logo + photography used on the page
@@ -82,10 +88,15 @@ drafts left in the tree.
 ## Notes
 
 - **The entry form is Kai's real Patch form**, embedded via an iframe in
-  `EntryForm.tsx` (`https://addons.patchretention.com/form/.../700670`).
-  Kai's tracking pixel for this same form is loaded separately in
+  `EntryForm.tsx` (`.../6a746f262960ef3d03df0761/700670`). The `formUrl`
+  prop lets a different page pass a different Patch form if needed. Kai's
+  Patch tracking pixel for this form is loaded separately in
   `app/layout.tsx` via `next/script`. If Patch changes the form's height,
   bump the iframe's `minHeight` in `EntryForm.tsx` to match.
+- **The VSL is Kai's real Wistia video** (media-id `yxgwzyh3fp`), embedded
+  in `HeroSection.tsx` via the `<wistia-player>` web component.
+- **Header tracking scripts** (Bolder's ad-click tag + Meta/Facebook Pixel)
+  are in `app/layout.tsx`'s `<head>`, loading on every page load.
 - There's no dedicated official-rules section on the page right now — add
   one (with real legal review) before the giveaway actually launches.
 - Update the CTA button's default label in one place: `CTAButton.tsx`'s

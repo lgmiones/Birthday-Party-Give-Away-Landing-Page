@@ -1,6 +1,11 @@
 import Image from "next/image";
+import Script from "next/script";
 import CTAButton from "./CTAButton";
 import ScrollReveal from "./ScrollReveal";
+
+// Kai's real VSL, hosted on Wistia. The blur/placeholder styling for this
+// media-id lives in globals.css (`wistia-player[media-id='...']`).
+const WISTIA_MEDIA_ID = "yxgwzyh3fp";
 
 /**
  * Main headline, sub headline, video, button — in that order, nothing else.
@@ -38,38 +43,19 @@ export default function HeroSection() {
           </p>
         </ScrollReveal>
 
-        {/* Video — drop your real explainer video in here. Swap the
-            <Image> + play-button block below for a <video> tag or an
-            <iframe> embed (YouTube/Vimeo) once it's ready. */}
+        {/* Kai's real VSL, embedded via Wistia's web-component player.
+            The two loader scripts below register the <wistia-player>
+            custom element; the blurred placeholder look before it loads
+            comes from the CSS rule in globals.css. */}
+        <Script src="https://fast.wistia.com/player.js" strategy="afterInteractive" />
+        <Script
+          src={`https://fast.wistia.com/embed/${WISTIA_MEDIA_ID}.js`}
+          strategy="afterInteractive"
+          type="module"
+        />
         <ScrollReveal delayMs={100} className="relative mx-auto mt-10 max-w-2xl">
-          <div className="group relative block cursor-pointer overflow-hidden rounded-lg bg-night shadow-soft">
-            <div className="relative aspect-video w-full">
-              <Image
-                src="/images/images/Reviews-birthday-parties.jpg"
-                alt="Video placeholder: kids cheering at a birthday party at Bolder Adventure Park"
-                fill
-                priority
-                className="object-cover opacity-60 transition-opacity duration-300 group-hover:opacity-50"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-night/80 via-night/20 to-night/10" />
-
-              <div className="absolute inset-0 flex items-center justify-center">
-                <span className="flex h-16 w-16 items-center justify-center rounded-full bg-white shadow-card transition-transform duration-300 group-hover:scale-110 sm:h-20 sm:w-20">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="ml-1 text-cta sm:h-7 sm:w-7">
-                    <path d="M6 4.5v15l13-7.5-13-7.5Z" fill="currentColor" />
-                  </svg>
-                </span>
-              </div>
-
-              <div className="absolute inset-x-0 bottom-0 flex items-center justify-between gap-3 p-4 sm:p-5">
-                <span className="rounded-md bg-white/90 px-3 py-1.5 text-xs font-semibold text-ink sm:text-sm">
-                  How the giveaway works
-                </span>
-                <span className="rounded-md bg-black/40 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wide text-white">
-                  Video
-                </span>
-              </div>
-            </div>
+          <div className="overflow-hidden rounded-lg bg-night shadow-soft">
+            <wistia-player media-id={WISTIA_MEDIA_ID} aspect="1.7777777777777777" />
           </div>
         </ScrollReveal>
 

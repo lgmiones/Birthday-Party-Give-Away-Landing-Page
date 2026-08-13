@@ -111,3 +111,14 @@ summary:focus-visible {
 .hide-scrollbar::-webkit-scrollbar {
   display: none; /* Chrome, Safari, modern Edge */
 }
+
+/* Wistia VSL placeholder — Kai's supplied rule. Shows a blurred cover-image
+   swatch while the <wistia-player> custom element is still loading/
+   registering, instead of a blank box. */
+wistia-player[media-id="yxgwzyh3fp"]:not(:defined) {
+  background: center / contain no-repeat
+    url("https://fast.wistia.com/embed/medias/yxgwzyh3fp/swatch");
+  display: block;
+  filter: blur(5px);
+  padding-top: 56.25%;
+}
